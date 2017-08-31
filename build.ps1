@@ -1,0 +1,1 @@
+docker build -t dockersamples/dotnet-album-viewer -f docker\app\Dockerfile .
