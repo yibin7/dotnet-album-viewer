@@ -50,8 +50,40 @@ Version supported:
 * **Angular 4.33**  
 * **Angular CLI 1.27**
 
+### Docker Features
+The **Docker** setup demonstrates:
+
+* Docker Windows containers
+* Multi-stage Docker builds
+* Optimized building and packaging of .NET Core apps
+* SQL Server running in a container
+* Docker Compose for distributed applications
+
+Versions supported:
+* **Windows 10 or Windows Server 2016**
+* **Docker 17.06 (CE or EE)**
+
+### Getting Started - using Docker on Windows ###
+
+You don't need .NET Core installed to run the app in Docker. Just clone the repo and run:
+
+```
+docker-compose build
+docker-compose up -d
+```
+
+That compiles the app using a Docker container, and then runs the app in distributed mode with one contaienr for the ASP.NET Core app, and one container for SQL Server.
+
+To run in a single container using SQLite instead of SQL Server, just run:
+
+```
+docker container run -d -P dockersamples/dotnet-album-viewer
+```
+
+You can view the app by browsing to the container's IP address - which you can find with `docker container inspect`.
 
 ### Getting Started ###
+
 You should just be able to clone this repo as is on either Windows or Mac (and probably Linux) and do:
 
 ```
