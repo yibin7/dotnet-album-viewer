@@ -46,7 +46,7 @@ namespace AlbumViewerNetCore
                 if (useSqLite != "true")
                 {
                     var connStr = Configuration["Data:SqlServerConnectionString"];
-                    builder.UseSqlServer(connStr);
+                    builder.UseSqlServer(connStr, options => options.EnableRetryOnFailure());
                 }
                 else
                 {
