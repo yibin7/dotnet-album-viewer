@@ -1,15 +1,8 @@
-version: '2.1'
+version: '3.2'
 
 services:
   db:
-    image: microsoft/mssql-server-windows-express
-    environment:
-      sa_password: "DockerCon!!!"
-      ACCEPT_EULA: "Y"
-    healthcheck:
-      test: [ "CMD", "sqlcmd", "-U", "sa", "-P", "DockerCon!!!", "-Q", "select 1" ]
-      interval: 2s
-      retries: 10
+    image: dockersamples/tidb:nanoserver
 
   app:
     image: dockersamples/dotnet-album-viewer
@@ -17,11 +10,10 @@ services:
       context: .
       dockerfile: docker/app/Dockerfile
     environment:
-      - "Data:useSqLite=false"
-      - "Data:SqlServerConnectionString=Server=db;Database=AlbumViewer;User Id=sa;Password=DockerCon!!!;MultipleActiveResultSets=true;App=AlbumViewer"
+      - "Data:Provider=MySQL"
+      - "Data:ConnectionString=Server=db;Port=4000;Database=AlbumViewer;User=root;SslMode=None"      
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     ports:
       - "80:80"
 

@@ -42,20 +42,29 @@ namespace AlbumViewerNetCore
         {
             services.AddDbContext<AlbumViewerContext>(builder =>
             {
-                string useSqLite = Configuration["Data:useSqLite"];
-                if (useSqLite != "true")
-                {
-                    var connStr = Configuration["Data:SqlServerConnectionString"];
-                    builder.UseSqlServer(connStr, options => options.EnableRetryOnFailure());
-                }
-                else
-                {
-                    // Note this path has to have full  access for the Web user in order 
-                    // to create the DB and write to it.
-                    var connStr = "Data Source=" +
-                                  Path.Combine(HostingEnvironment.ContentRootPath, "AlbumViewerData.sqlite");
-                    builder.UseSqlite(connStr);
-                }
+				var dbProvider = Configuration["Data:Provider"];
+				var connStr = Configuration["Data:ConnectionString"];
+				switch (dbProvider.Trim().ToLower())
+				{
+					case ("sqlserver"):
+						{							
+							builder.UseSqlServer(connStr, options => options.EnableRetryOnFailure());
+						}
+						break;
+					case ("mysql"):
+						{
+							builder.UseMySQL(connStr);
+						}
+						break;
+					default:
+						{
+							// Note this path has to have full  access for the Web user in order 
+							// to create the DB and write to it.
+							connStr = connStr.Replace("{ContentRootPath}", HostingEnvironment.ContentRootPath);
+							builder.UseSqlite(connStr);
+						}
+						break;
+				}				
             });
 
 
