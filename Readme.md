@@ -1,5 +1,7 @@
 ﻿# West Wind Album Viewer ASP.NET Core Sample
 
+> This is a forked version of the original [Album Viewer sample](https://github.com/RickStrahl/AlbumViewerVNext). It adds support to run the app in Docker containers on Windows Server 2019 or Windows 10. See the [Getting Started with Windows Containers](https://github.com/docker/labs/tree/master/windows/windows-containers) lab for more details.
+
 **Sample Angular (4) application demonstrating ASP.NET Core API features**
 
 This is a sample ASP.NET Core application that demonstrates basic features of ASP.NET Core in an API backend application with an Angular frontend. The application allows browsing and editing of a list of albums and artists interactively.
