@@ -2,6 +2,11 @@
 
 This is a forked version of [Album Viewr Sample](https://github.com/dockersamples/dotnet-album-viewer) by dockersamples which itself is forked from [Rick Srahl's app](https://github.com/RickStrahl/AlbumViewerVNext). This version  is compatible with the new style of containerising  .NET Core applications. 
 
+### Application Design 
+
+![appliction design](app_architecture.jpg)
+
+
 **Sample Angular (4) application demonstrating ASP.NET Core API features**
 
 This is a sample ASP.NET Core application that demonstrates basic features of ASP.NET Core in an API backend application with an Angular frontend. The application allows browsing and editing of a list of albums and artists interactively.
