@@ -3,6 +3,9 @@ version: "3.7"
 services: 
   app: 
     image: schoolofdevops/dotnet-album-viewer
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports: 
       - 80:80
     depends_on: 
