@@ -2,8 +2,8 @@ version: "3.3"
 
 services: 
   albumviewer: 
-    image: sofdreg02.azurecr.io/schoolofdevops/albumviewer
-    build: 
+    image: sofdreg03.azurecr.io/schoolofdevops/albumviewer
+    build:
       context: .
       dockerfile: Dockerfile
     ports: 
