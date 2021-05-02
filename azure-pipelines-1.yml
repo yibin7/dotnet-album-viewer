@@ -10,9 +10,9 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'cbf8c9d1-33f0-4c57-ab9f-4528cd83a826'
+  dockerRegistryServiceConnection: '97169d61-cbef-42c8-af02-59903204655f'
   imageRepository: 'schoolofdevops/albumviewer'
-  containerRegistry: 'sofdreg002.azurecr.io'
+  containerRegistry: 'sofdreg02.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: 'v-$(Build.BuildId)'
 
@@ -37,5 +37,5 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-        latest
-        dev
+          latest
+          dev
