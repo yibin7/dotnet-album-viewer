@@ -1,15 +1,70 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+=======
+>>>>>>> a5fef61d7ff546fedb70d20c958754a492386634
 # ASP.NET Core (.NET Framework)
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+<<<<<<< HEAD
+=======
+>>>>>>> 37fd9fd1a8176db5385fa735a56ab4994acdc88c
+>>>>>>> a5fef61d7ff546fedb70d20c958754a492386634
 
 trigger:
 - master
 
+<<<<<<< HEAD
 pool:
   vmImage: 'windows-latest'
 
 variables:
+=======
+<<<<<<< HEAD
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '97169d61-cbef-42c8-af02-59903204655f'
+  imageRepository: 'schoolofdevops/albumviewer'
+  containerRegistry: 'sofdreg02.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: 'v-$(Build.BuildId)'
+
+  # Agent VM image name
+  vmImageName: 'windows-latest'
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+          latest
+          dev
+=======
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+>>>>>>> a5fef61d7ff546fedb70d20c958754a492386634
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
@@ -28,4 +83,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+<<<<<<< HEAD
 
+=======
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+>>>>>>> 37fd9fd1a8176db5385fa735a56ab4994acdc88c
+>>>>>>> a5fef61d7ff546fedb70d20c958754a492386634

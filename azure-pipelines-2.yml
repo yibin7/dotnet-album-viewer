@@ -10,17 +10,11 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-<<<<<<< HEAD
-  dockerRegistryServiceConnection: '570dd0c5-e6c7-4488-a4de-a3a5c26adef5'
+  dockerRegistryServiceConnection: '67183742-ed0b-41fd-841a-52dc16278103'
   imageRepository: 'schoolofdevops/albumviewer'
-  containerRegistry: 'sofdreg03.azurecr.io'
-=======
-  dockerRegistryServiceConnection: '97169d61-cbef-42c8-af02-59903204655f'
-  imageRepository: 'schoolofdevops/albumviewer'
-  containerRegistry: 'sofdreg02.azurecr.io'
->>>>>>> a5fef61d7ff546fedb70d20c958754a492386634
+  containerRegistry: 'sofdreg002.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  tag: 'v-$(Build.BuildId)'
+  tag: '$(Build.BuildId)'
 
   # Agent VM image name
   vmImageName: 'windows-latest'
@@ -44,8 +38,4 @@ stages:
         tags: |
           $(tag)
           latest
-<<<<<<< HEAD
           dev
-=======
-          dev
->>>>>>> a5fef61d7ff546fedb70d20c958754a492386634
